@@ -1,9 +1,9 @@
-html {
+/* html {
     box-sizing: border-box;
 }
 * {
     box-sizing: inherit;
-}
+} */
 
 p {
     margin: 6px;
@@ -16,4 +16,20 @@ p {
 
 ul > li {
     border-top: 5px solid red;
+  }
+
+  .my-grid {
+    display: grid;
+    grid-template-columns: auto 150px;
+    grid-template-rows: auto 150px;
+  }
+
+  .has-blue-background {
+    background-color: #A7DDFF;
+    border: 1px solid #721EE3;
+  }
+
+  .has-yellow-background {
+    background-color: #FAF7A7;
+    border: 1px solid #E38C1E;
   }
