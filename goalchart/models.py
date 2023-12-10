@@ -11,7 +11,7 @@ class Student(models.Model):
     FOURTH = "G4"
     FIFTH = "G5"
     OTHER = "GO"
-    YEAR_IN_SCHOOL_CHOICES = {
+    GRADE_IN_SCHOOL_CHOICES = {
         KINDERGARTEN: "Kindergarten",
         FIRST: "1st Grade",
         SECOND: "2nd Grade",
@@ -21,9 +21,9 @@ class Student(models.Model):
         OTHER: "Other",
     }
 
-    year_in_school = models.CharField(
+    grade_in_school = models.CharField(
         max_length=2,
-        choices=YEAR_IN_SCHOOL_CHOICES,
+        choices=GRADE_IN_SCHOOL_CHOICES,
         default=KINDERGARTEN,
     )
     created_on = models.DateTimeField(auto_now_add=True)
@@ -82,7 +82,7 @@ class Goals(models.Model):
     goal_picture = models.URLField()
 
     def average_rating(self) -> float:
-        return Rating.objects.filter(goals=self).aggregate(Avg("rating")) ["rating_avg"]
+        return Rating.objects.filter(goals=self).aggregate(Avg("rating")) ["rating_avg"] or 0
 
     def __str__(self):
         return f"{self.goal_name}: {self.average_rating()}"
