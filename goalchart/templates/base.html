@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <title>{% block title %} TeachClip {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=Roboto&display=swap");
+    </style>
+  </head>
+    <body>
+        <header>
+            <nav>
+                <a href="{% url "" %}" class="white-over-dark-b">Home</a>
+                <a href="{% url "" %}" class='white-over-dark-b'>About</a>
+                {% block nav%}
+
+                {% endblock nav%}
+            </nav>
+        </header>
+        <main>
+        {% block main %}
+        <h1>TeachClip</h1>
+
+        {% endblock main %}
+        </main>
+        <footer>Copyright 2024 by Shiela Lee</footer>
+    </body>
+  </html>

@@ -32,7 +32,6 @@ class GoalsAdmin(admin.ModelAdmin):
         "goal_name",
         "goal_description",
         "goal_picture",
-        "average_rating",
 
     ]
 

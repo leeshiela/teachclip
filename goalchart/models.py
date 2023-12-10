@@ -81,11 +81,13 @@ class Goals(models.Model):
     goal_description = models.TextField()
     goal_picture = models.URLField()
 
-    def average_rating(self) -> float:
-        return Rating.objects.filter(goals=self).aggregate(Avg("rating")) ["rating_avg"] or 0
-
     def __str__(self):
-        return f"{self.goal_name}: {self.average_rating()}"
+        return self.goal_name
+    # def average_rating(self) -> float:
+    #     return Rating.objects.filter(goals=self).aggregate(Avg("rating")) ["rating_avg"] or 0
+
+    # def __str__(self):
+    #     return f"{self.goal_name}: {self.average_rating()}"
 
     class Meta:
         ordering = ["goal_name"]
