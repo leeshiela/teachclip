@@ -37,7 +37,7 @@ class Student(models.Model):
     # Add Parent Foreign Key
 
 
-class Schedule(models.model):
+class Schedule(models.Model):
     student = models.ForeignKey(
         Student,
         related_name="schedule",
