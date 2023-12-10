@@ -40,6 +40,7 @@ class GoalsAdmin(admin.ModelAdmin):
 class RatingAdmin(admin.ModelAdmin):
     list_display = [
         "id",
+        "student",
         "goals",
         "rating",
     ]
