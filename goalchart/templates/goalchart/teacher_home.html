@@ -1,5 +1,15 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 
 {% endblock title %}
+
+{% block main %}
+<div class="info-img">
+    <img src="{% static "img/paperclips.jpg" %}" alt="paperclip image">
+    <h1>Collaborating better by organizing better</h1>
+</div>
+
+
+{% endblock main %}
