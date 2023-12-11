@@ -7,22 +7,31 @@
     <title>{% block title %} TeachClip- Goal Charts {% endblock title %}</title>
     <link rel="stylesheet" href="{% static "css/styles.css" %}">
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=Roboto&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Shadows+Into+Light&family=Shadows+Into+Light+Two&display=swap');
     </style>
   </head>
     <body>
         <header>
+          <div id="header-layout">
+            <a href="{% url "teacher_home" %}">
+              <div id="logo-layout">
+                <img id="logo" src="{% static "img/logo.jpg" %}" alt="logo">
+                <h1>TeachClip</h1>
+              </div>
+            </a>
             <nav>
-                <a href="{% url "" %}" class="white-over-dark-b">Home</a>
-                <a href="{% url "" %}" class='white-over-dark-b'>About</a>
-                {% block nav%}
+              <div><a href="{% url "teacher_home" %}">Home</a></div>
+              <div><a href="{% url "teacher_home" %}">Goal Chart</a></div>
+              <div><a href="{% url "teacher_home" %}">My Students</a></div>
+              <div><a href="{% url "teacher_home" %}">About</a></div>
+              {% block nav%}
 
-                {% endblock nav%}
+              {% endblock nav%}
             </nav>
+          </div>
         </header>
         <main>
         {% block main %}
-        <h1>TeachClip</h1>
 
         {% endblock main %}
         </main>

@@ -11,11 +11,11 @@ def goal_per_day(request, id):
     }
     return render(request, "goal_chart.html", context)
 
-def goal_list(request, id):
-    list_of_goals = get_object_or_404(Goals, id=id)
+def goal_list(request):
+    list_of_goals = get_object_or_404(Goals)
     students = Student.objects.all()
     context = {
         "students": students,
         "goals": list_of_goals,
     }
-    return render(request, "teacher_home.html", context)
+    return render(request, "goalchart/teacher_home.html", context)

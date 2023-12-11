@@ -1,5 +1,57 @@
+html, body {
+    font-family: 'Cormorant Garamond', serif;
+}
 
 
-.white-over-dark-b {
-    color: white;
+nav{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    text-align: center;
+    align-items: center;
+}
+
+#logo-layout {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 10px;
+    margin: 0px;
+}
+
+#logo-layout h1 {
+    margin: 0px;
+}
+
+#logo-layout h1:visited {
+    color: black;
+}
+
+#header-layout {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    position: sticky;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#logo {
+    width: 60px;
+    height: 85px;
+    block-size: fit-content;
+    border-radius: 5px;
+}
+
+h1 {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+
+footer {
+    font-family: 'Shadows Into Light', cursive;
 }
