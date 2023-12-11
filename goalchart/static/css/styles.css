@@ -23,10 +23,41 @@ nav{
 
 #logo-layout h1 {
     margin: 0px;
+    animation-name: slidein;
+    animation-duration: 5s;
+}
+
+#logo {
+    width: 60px;
+    height: 85px;
+    block-size: fit-content;
+    border-radius: 5px;
+    animation-name: slidein-reverse;
+    animation-duration: 5s;
 }
 
 #logo-layout h1:visited {
     color: black;
+}
+
+@keyframes slidein {
+    from {
+      transform: translateX(-100px);
+    }
+
+    to {
+      transform: translateX(0px);
+    }
+}
+
+@keyframes slidein-reverse {
+    from {
+      transform: translateX(100px);
+    }
+
+    to {
+      transform: translateX(0px);
+    }
 }
 
 #header-layout {
@@ -40,12 +71,6 @@ a {
     color: black;
 }
 
-#logo {
-    width: 60px;
-    height: 85px;
-    block-size: fit-content;
-    border-radius: 5px;
-}
 
 h1 {
     font-family: 'Shadows Into Light', cursive;
