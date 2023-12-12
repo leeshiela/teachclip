@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Schedule, Goals, Rating
+from .models import Student, Schedule, Goals
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -32,14 +32,14 @@ class GoalsAdmin(admin.ModelAdmin):
         "goal_name",
         "goal_description",
         "goal_picture",
+        "goal_rating",
 
     ]
 
-@admin.register(Rating)
-class RatingAdmin(admin.ModelAdmin):
-    list_display = [
-        "id",
-        "student",
-        "goals",
-        "rating",
-    ]
+# @admin.register(Rating)
+# class RatingAdmin(admin.ModelAdmin):
+#     list_display = [
+#         "id",
+#         "goals",
+#         "rating",
+#     ]

@@ -40,9 +40,12 @@ class Student(models.Model):
 class Schedule(models.Model):
     student = models.ForeignKey(
         Student,
-        related_name="schedule",
+        related_name="schedules",
         on_delete=models.CASCADE,
     )
+    def __str__(self):
+        return self.student.student_first_name
+
     MONDAY = "MON"
     TUESDAY = "TUE"
     WEDNESDAY = "WED"
@@ -73,16 +76,19 @@ class Schedule(models.Model):
 
 class Goals(models.Model):
     student = models.ForeignKey(
-        Student,
-        related_name="goals",
+        Schedule,
+        related_name="schedules",
         on_delete=models.CASCADE,
     )
     goal_name = models.CharField(max_length=200)
     goal_description = models.TextField()
     goal_picture = models.URLField()
+    last_modified = models.DateTimeField(auto_now=True, null=True)
+    goal_rating = models.PositiveSmallIntegerField(default = 0,null=True)
 
     def __str__(self):
         return self.goal_name
+
     # def average_rating(self) -> float:
     #     return Rating.objects.filter(goals=self).aggregate(Avg("rating")) ["rating_avg"] or 0
 
@@ -93,18 +99,13 @@ class Goals(models.Model):
         ordering = ["goal_name"]
 
 
-class Rating(models.Model):
-    student = models.ForeignKey(
-        Student,
-        related_name="ratings",
-        on_delete=models.CASCADE,
-    )
-    goals = models.ForeignKey(
-        Goals,
-        related_name="goal_ratings",
-        on_delete=models.CASCADE
-    )
-    rating = models.PositiveSmallIntegerField(default = 0)
+# class Rating(models.Model):
+#     goals = models.ForeignKey(
+#         Goals,
+#         related_name="goal_ratings",
+#         on_delete=models.CASCADE
+#     )
+#     rating = models.PositiveSmallIntegerField(default = 0)
 
-    def __str__(self):
-        return f"{self.goals.goal_name}: {self.rating}"
+#     def __str__(self):
+#         return f"{self.goals.goal_name}: {self.rating}"

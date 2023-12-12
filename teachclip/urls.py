@@ -23,5 +23,5 @@ def redirect_to_info(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", redirect_to_info, name="home_page"),
-    path("goalchart/", include("goalchart.urls"))
+    path("goals/", include("goalchart.urls"))
 ]

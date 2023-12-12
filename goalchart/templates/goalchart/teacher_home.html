@@ -1,17 +1,39 @@
 {% extends "base.html" %}
-
-{% block title %}
-
-{% endblock title %}
+{% block title %} Teacher Home {% endblock title %}
 
 {% block main %}
-<h1>I am a: </h1>
-<div id="profile-selection">
-    <h2>Student</h2>
-    <h2>Teacher</h2>
-    <h2>Parent</h2>
+<h1>My Students</h1>
+
+<div>
+  {% for student in students %}
+  <h2>{{ student.student_first_name }}</h2>
+  <div class="student-list-goals">
+    <table>
+      <thead>
+        <tr>
+          <th>Goal</th>
+          <th>How have I been doing?</th>
+          <th>Last Updated On</th>
+        </tr>
+      </thead>
+      <tbody class="striped-table">
+        {% for goal in student.goals.all %}
+        <tr>
+          <td>{{ goal.goal_name}}
+          </td>
+
+          <td>
+            {% for rating in goal.goal_ratings.all %}
+            {{ rating.rating}}
+            {% endfor %}
+         </td>
+          <td>{{ goal.last_modified }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
 </div>
-
-
 
 {% endblock main %}
