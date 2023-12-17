@@ -118,10 +118,16 @@ h1 {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    border: 2px solid black;
     background-color: wheat;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+}
+
+#profile-selection h2:nth-of-type(odd) {
+    background: linear-gradient(in hsl, rgb(82, 185, 216), rgb(177, 88, 225))
 }
 
 footer {
@@ -136,4 +142,50 @@ table {
 
 .striped-table> tr:nth-child(even) {
     background-color: lightgray;
+}
+
+/* Forms CSS */
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+}
+
+button {
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    pointer-events: auto;
+    background: linear-gradient(35deg, #8C52FF, #C669FF);
+    animation: hueRotate 3s linear infinite alternate;
+    border-radius: 5px;
+}
+
+@keyframes hueRotate {
+ to {
+   filter: hue-rotate(85deg);
+ }
+}
+
+input:not(:placeholder-shown):invalid {
+    animation: shake 0.2s ease-in-out 0s 2;
+    box-shadow: 0 0 0.4em red;
+   }
+
+   @keyframes shake {
+    0% { margin-left: 0rem; }
+    25% { margin-left: 0.5rem; }
+    75% { margin-left: -0.5rem; }
+    100% { margin-left: 0rem; }
+   }
+
+form:invalid button {
+    background-color: salmon;
+    pointer-events: none;
+}
+
+form:valid button {
+    pointer-events: auto;
 }

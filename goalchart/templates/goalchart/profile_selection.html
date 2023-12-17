@@ -8,12 +8,8 @@
 <h1>I am a: </h1>
 
 <div id="profile-selection">
-
-    <h2>Student</h2>
-
-    <h2>Teacher</h2>
-
-    <h2>Parent</h2>
-
+    <a href="{% url "teacher_signup" %}"><h2>Student</h2></a>
+    <a href="{% url "teacher_signup" %}"><h2>Teacher</h2></a>
+    <a href="{% url "teacher_signup" %}"><h2>Parent</h2></a>
 </div>
 {% endblock main %}

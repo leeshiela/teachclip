@@ -18,10 +18,11 @@ from django.urls import path, include
 from django.shortcuts import redirect
 
 def redirect_to_info(request):
-    return redirect("info.html")
+    return redirect("info")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", redirect_to_info, name="home_page"),
-    path("goals/", include("goalchart.urls"))
+    path("goals/", include("goalchart.urls")),
+    path("accounts/", include("accounts.urls")),
 ]

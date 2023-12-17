@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "accounts.apps.AccountsConfig",
     "goalchart.apps.GoalchartConfig",
     'django.contrib.admin',
     'django.contrib.auth',

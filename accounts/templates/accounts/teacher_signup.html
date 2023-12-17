@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Sign Up! - TeachClip
+{% endblock title %}
+
+{% block nav %}
+
+{% endblock nav %}
+
+{% block main %}
+    <h1>Teacher Sign up!</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ signupform.as_p }}
+        <button>Sign up</button>
+    </form>
+{% endblock main %}

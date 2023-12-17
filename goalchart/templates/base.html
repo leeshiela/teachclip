@@ -13,17 +13,23 @@
     <body>
         <header>
           <div id="header-layout">
-            <a href="{% url "teacher_home" %}">
+            <a href="{% url "info" %}">
               <div id="logo-layout">
                 <img id="logo" src="{% static "img/logo.jpg" %}" alt="logo">
                 <h1>TeachClip</h1>
               </div>
             </a>
             <nav>
-              <div><a href="{% url "teacher_home" %}">Home</a></div>
-              <div><a href="{% url "teacher_home" %}">Goal Chart</a></div>
-              <div><a href="{% url "teacher_home" %}">My Students</a></div>
-              <div><a href="{% url "teacher_home" %}">About</a></div>
+              {% comment %} <div><a href="{% url "info" %}">Home</a></div> {% endcomment %}
+              {% if user.is_authenticated %}
+                <div><a href="{% url "teacher_home" %}">Goal Chart</a></div>
+                <div><a href="{% url "teacher_home" %}">My Students</a></div>
+                <a href="{% url "logout" %}">Logout</a>
+              {% else %}
+                <a href="{% url "profile_selection" %}">Sign Up</a>
+                <a href="{% url "teacher_login" %}">Login</a>
+              {% endif %}
+              {% comment %} <div><a href="{% url "about" %}">About</a></div> {% endcomment %}
               {% block nav%}
 
               {% endblock nav%}
@@ -39,6 +45,6 @@
 
         {% endblock main %}
         </main>
-        <footer>Copyright 2024 by Shiela Lee</footer>
+        <footer>Copyright 2024 by TeachClip</footer>
     </body>
   </html>

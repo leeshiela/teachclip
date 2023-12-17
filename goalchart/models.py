@@ -99,13 +99,13 @@ class Goals(models.Model):
         ordering = ["goal_name"]
 
 
-# class Rating(models.Model):
-#     goals = models.ForeignKey(
-#         Goals,
-#         related_name="goal_ratings",
-#         on_delete=models.CASCADE
-#     )
-#     rating = models.PositiveSmallIntegerField(default = 0)
+class Rating(models.Model):
+    goals = models.ForeignKey(
+        Goals,
+        related_name="goal_ratings",
+        on_delete=models.CASCADE
+    )
+    rating = models.PositiveSmallIntegerField(default = 0)
 
-#     def __str__(self):
-#         return f"{self.goals.goal_name}: {self.rating}"
+    def __str__(self):
+        return f"{self.goals.goal_name}: {self.rating}"
