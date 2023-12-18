@@ -3,36 +3,36 @@
 
 {% block main %}
 <h1>My Students</h1>
+<a href="{% url "add_student" %}"><h2>+ Student</h2></a>
 
-<div>
+<div class="student-container">
   {% for student in students %}
-  <h2>{{ student.student_first_name }}</h2>
-  <div class="student-list-goals">
-    <table>
-      <thead>
-        <tr>
-          <th>Goal</th>
-          <th>How have I been doing?</th>
-          <th>Last Updated On</th>
-        </tr>
-      </thead>
-      <tbody class="striped-table">
-        {% for goal in student.goals.all %}
-        <tr>
-          <td>{{ goal.goal_name}}
-          </td>
-
-          <td>
-            {% for rating in goal.goal_ratings.all %}
-            {{ rating.rating}}
-            {% endfor %}
-         </td>
-          <td>{{ goal.last_modified }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+    <div class="student-box {% cycle "group1" "group2" "group3" %}">
+      <h2>{{ student.student_first_name }}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Goal(s)</th>
+            <th>How have I been doing?</th>
+            <th>Last Updated On</th>
+          </tr>
+        </thead>
+        <tbody class="striped-table">
+          {% for goal in student.goals.all %}
+          <tr>
+            <td>{{ goal.goal_name}}
+            </td>
+            <td>
+              {% for rating in goal.goal_ratings.all %}
+              {{ rating.rating}}
+              {% endfor %}
+            </td>
+            <td>{{ goal.last_modified }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   {% endfor %}
 </div>
 

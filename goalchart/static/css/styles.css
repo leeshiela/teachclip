@@ -132,16 +132,79 @@ h1 {
 
 footer {
     font-family: 'Shadows Into Light', cursive;
+    margin: 20px;
+    padding: 40px;
 }
 
 /* Teacher Home */
+.student-container {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+
+.student-box {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 100px;
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.group1 {
+    background-color: rgb(201, 240, 201);
+}
+
+.group2 {
+    background-color: rgb(150, 229, 209);
+}
+
+.group3 {
+    background-color: rgb(228, 184, 244);
+}
 
 table {
-    border: 2px, solid black;
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background: black;
+    color: white;
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+table td {
+    font-size: 18px;
+    padding: 10px;
+}
+
+table, th, td {
+    border: 1px solid;
 }
 
 .striped-table> tr:nth-child(even) {
     background-color: lightgray;
+}
+
+.striped-table> tr:nth-child(odd) {
+    background-color: white;
+}
+
+.striped-table> tr:nth-child(even):hover {
+    background-color: yellow;
+}
+
+.striped-table> tr:nth-child(odd):hover {
+    background-color: yellow;
 }
 
 /* Forms CSS */

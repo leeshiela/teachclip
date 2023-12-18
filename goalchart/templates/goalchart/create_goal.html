@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create a student goal
+{% endblock title %}
+
+{% block nav %}
+
+{% endblock nav %}
+
+{% block main %}
+    <h1>Create a Goal</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ goal_form.as_p }}
+        <button>Create</button>
+    </form>
+{% endblock main %}

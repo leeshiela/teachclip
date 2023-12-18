@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Schedule, Goals
+from .models import Student, Schedule, Goal
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -24,11 +24,12 @@ class ScheduleAdmin(admin.ModelAdmin):
 
     ]
 
-@admin.register(Goals)
+@admin.register(Goal)
 class GoalsAdmin(admin.ModelAdmin):
     list_display = [
         "id",
         "student",
+        "schedule",
         "goal_name",
         "goal_description",
         "goal_picture",

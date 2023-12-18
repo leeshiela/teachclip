@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.conf import settings
 
 class Student(models.Model):
     student_first_name = models.CharField(max_length=200)
@@ -31,6 +32,14 @@ class Student(models.Model):
 
     def __str__(self):
         return self.student_first_name
+
+    teacher = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="students",
+        on_delete=models.CASCADE,
+        null=True,
+    )
+
     class Meta:
         ordering = ["student_first_name"]
     # Add Teacher Foreign Key
@@ -42,9 +51,8 @@ class Schedule(models.Model):
         Student,
         related_name="schedules",
         on_delete=models.CASCADE,
+        null=True,
     )
-    def __str__(self):
-        return self.student.student_first_name
 
     MONDAY = "MON"
     TUESDAY = "TUE"
@@ -65,6 +73,8 @@ class Schedule(models.Model):
         choices=DAY_OF_WEEK,
         default=MONDAY,
     )
+    def __str__(self):
+        return self.day_of_the_week
 
     period_number = models.PositiveSmallIntegerField(default=1)
     activity = models.CharField(max_length=200)
@@ -74,11 +84,18 @@ class Schedule(models.Model):
         ordering = ["activity"]
 
 
-class Goals(models.Model):
+class Goal(models.Model):
     student = models.ForeignKey(
-        Schedule,
-        related_name="schedules",
+        Student,
+        related_name="goals",
         on_delete=models.CASCADE,
+        null=True,
+    )
+    schedule = models.ForeignKey(
+        Schedule,
+        related_name="goals",
+        on_delete=models.CASCADE,
+        null=True,
     )
     goal_name = models.CharField(max_length=200)
     goal_description = models.TextField()
@@ -101,9 +118,10 @@ class Goals(models.Model):
 
 class Rating(models.Model):
     goals = models.ForeignKey(
-        Goals,
+        Goal,
         related_name="goal_ratings",
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True,
     )
     rating = models.PositiveSmallIntegerField(default = 0)
 
