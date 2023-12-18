@@ -13,7 +13,7 @@ def goal_per_day(request, id):
 
 @login_required
 def goal_list(request):
-    students = Student.objects.all()
+    students = Student.objects.filter(teacher=request.user)
     context = {
         "students": students,
     }

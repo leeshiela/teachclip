@@ -1,14 +1,27 @@
 {% extends "base.html" %}
+
 {% block title %} Teacher Home {% endblock title %}
 
+{% block userimg %}
+  <div class="info-img">
+    <img src="https://picsum.photos/id/24/100/200" alt="book image">
+    <h1>{{ user.first_name }}'s Awesome Students</h1>
+  </div>
+{% endblock userimg %}
+
 {% block main %}
-<h1>My Students</h1>
-<a href="{% url "add_student" %}"><h2>+ Student</h2></a>
+<div class="center-container">
+  <h1>My Students</h1>
+  <div id="add-student">
+    <a href="{% url "add_student" %}"><h2>+ Student</h2></a>
+  </div>
+</div>
 
 <div class="student-container">
   {% for student in students %}
     <div class="student-box {% cycle "group1" "group2" "group3" %}">
       <h2>{{ student.student_first_name }}</h2>
+      <a href="{% url "create_goal" %}"><p>+ Goal</p></a>
       <table>
         <thead>
           <tr>

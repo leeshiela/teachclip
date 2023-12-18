@@ -32,17 +32,19 @@
                 <a href="{% url "teacher_login" %}">Login</a>
               {% endif %}
               {% comment %} <div><a href="{% url "about" %}">About</a></div> {% endcomment %}
-              {% block nav%}
+              {% block nav %}
 
-              {% endblock nav%}
+              {% endblock nav %}
             </nav>
           </div>
         </header>
         <main>
+        {% block userimg %}
           <div class="info-img">
             <img src="{% static "img/paperclips.jpg" %}" alt="paperclip image">
             <h1>Collaborating better by organizing better</h1>
           </div>
+          {% endblock userimg %}
         {% block main %}
 
         {% endblock main %}

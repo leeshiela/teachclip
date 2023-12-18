@@ -137,6 +137,30 @@ footer {
 }
 
 /* Teacher Home */
+.center-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-student {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    background-color: wheat;
+    padding: 10px;
+    border: 1px solid;
+}
+
+#add-student:hover {
+    box-shadow: 10px 5px 5px rgb(2, 38, 8);
+}
+
 .student-container {
     display: grid;
     grid-template-columns: repeat(2, 50%);
@@ -144,13 +168,32 @@ footer {
 
 .student-box {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: center;
     margin: 100px;
     border: 2px solid;
     border-radius: 10px;
     padding: 20px;
+    box-shadow: 10px 5px 5px rgb(2, 38, 8);
+}
+
+.student-box p {
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.student-box p:hover {
+    box-shadow: 10px 5px 5px rgb(2, 38, 8);
+    border: 1px solid;
 }
 
 .group1 {
@@ -224,6 +267,7 @@ button {
     background: linear-gradient(35deg, #8C52FF, #C669FF);
     animation: hueRotate 3s linear infinite alternate;
     border-radius: 5px;
+    color: white;
 }
 
 @keyframes hueRotate {
