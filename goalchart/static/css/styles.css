@@ -119,15 +119,15 @@ h1 {
     height: 200px;
     border-radius: 50%;
     border: 2px solid black;
-    background-color: wheat;
+    background: linear-gradient(in hsl, rgb(75, 152, 175), rgb(76, 216, 160));
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
 }
 
-#profile-selection h2:nth-of-type(odd) {
-    background: linear-gradient(in hsl, rgb(82, 185, 216), rgb(177, 88, 225))
+#profile-selection a:nth-of-type(odd) h2 {
+    background: linear-gradient(in hsl, rgb(82, 185, 216), rgb(177, 88, 225));
 }
 
 footer {

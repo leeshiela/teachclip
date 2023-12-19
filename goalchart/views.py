@@ -5,7 +5,7 @@ from goalchart.forms import CreateStudentGoal, AddStudent
 
 @login_required
 def goal_per_day(request, id):
-    student = get_object_or_404(Student, id=id)
+    student = Student.objects.filter(teacher=request.user)
     context = {
         "student": student,
     }
