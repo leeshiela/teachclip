@@ -27,20 +27,39 @@ def average_rating(request):
     avg_rating = ratings/len(ratings)
 
 @login_required
-def create_student_goal(request):
+def create_student_goal(request, id):
     if request.method == "POST":
-        form = CreateStudentGoal(request.POST)
+        form = CreateStudentGoal(request.POST, user=id)
         if form.is_valid():
             goal = form.save(False)
+            goal.student = Student.objects.get(id=id)
             goal.teacher = request.user
             goal.save()
             return redirect("teacher_home")
     else:
-        form = CreateStudentGoal()
+        form = CreateStudentGoal(user=id)
     context = {
         "goal_form": form,
+        "student_name": Student.objects.get(id=id).student_first_name
     }
     return render(request, "goalchart/create_goal.html", context)
+
+@login_required
+def edit_student_goal(request, id):
+    goal = get_object_or_404(Goal, id=id)
+    if request.method == "POST":
+        form = CreateStudentGoal(request.POST, instance=goal)
+        if form.is_valid():
+            form.save()
+            return redirect("teacher_home")
+    else:
+        form = CreateStudentGoal(instance=goal)
+    context = {
+        "goal": goal,
+        "edit_goal": form,
+    }
+    return render(request, "goalchart/edit_goal.html", context)
+
 
 @login_required
 def add_student(request):
@@ -57,3 +76,11 @@ def add_student(request):
         "student_form": form,
     }
     return render(request, "goalchart/add_student.html", context)
+
+@login_required
+def show_student_goal_detail(request, id):
+    goal = get_object_or_404(Goal, id=id)
+    context = {
+        "goal": goal,
+    }
+    return render(request, "goalchart/student_detail.html", context)

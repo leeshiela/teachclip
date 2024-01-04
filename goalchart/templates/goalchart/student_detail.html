@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Create a student goal
+{{student.student_first_name}}'s Goals
 {% endblock title %}
 
 {% block nav %}
@@ -9,10 +9,10 @@ Create a student goal
 {% endblock nav %}
 
 {% block main %}
-    <h1>Create a Goal for {{student_name}}</h1>
+    <h1>Edit {{ student.student_first_name}}'s Goal</h1>
     <form method="post">
         {% csrf_token %}
-        {{ goal_form.as_p }}
-        <button>Create</button>
+        {{ edit_goal.as_p }}
+        <button>Edit</button>
     </form>
 {% endblock main %}

@@ -17,7 +17,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     list_display = [
         "id",
         "student",
-        "day_of_the_week",
+        "date",
         "period_number",
         "activity",
         "picture",

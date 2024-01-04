@@ -21,7 +21,7 @@
   {% for student in students %}
     <div class="student-box {% cycle "group1" "group2" "group3" %}">
       <h2>{{ student.student_first_name }}</h2>
-      <a href="{% url "create_goal" %}"><p>+ Goal</p></a>
+      <a href="{% url "create_goal" student.id %}"><p>+ Goal</p></a>
       <table>
         <thead>
           <tr>
@@ -33,15 +33,15 @@
         <tbody class="striped-table">
           {% for goal in student.goals.all %}
           <tr>
-            <td>{{ goal.goal_name}}
-            </td>
-            <td>
-              {% for rating in goal.goal_ratings.all %}
-              {{ rating.rating}}
-              {% endfor %}
-            </td>
-            <td>{{ goal.last_modified }}</td>
-          </tr>
+              <td><a href="{% url "edit_goal" goal.id %}">{{ goal.goal_name}}</a></td>
+                <td>
+                  {% for rating in goal.goal_ratings.all %}
+                  {{ rating.rating}}
+                  {% endfor %}
+                </td>
+                <td>{{ goal.last_modified }}</td>
+            </tr>
+
           {% endfor %}
         </tbody>
       </table>

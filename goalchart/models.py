@@ -39,10 +39,14 @@ class Student(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
-
+    # parent = models.ForeignKey(
+    #     settings.AUTH_USER_MODEL,
+    #     related_name = "students",
+    #     on_delete = models.CASCADE,
+    #     null=True
+    # )
     class Meta:
         ordering = ["student_first_name"]
-    # Add Teacher Foreign Key
     # Add Parent Foreign Key
 
 
@@ -53,32 +57,56 @@ class Schedule(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
+    date = models.DateTimeField(null=True)
+    # MONDAY = "MON"
+    # TUESDAY = "TUE"
+    # WEDNESDAY = "WED"
+    # THURSDAY = "THU"
+    # FRIDAY = "FRI"
 
-    MONDAY = "MON"
-    TUESDAY = "TUE"
-    WEDNESDAY = "WED"
-    THURSDAY = "THU"
-    FRIDAY = "FRI"
+    # DAY_OF_WEEK = {
+    #     MONDAY: "Monday",
+    #     TUESDAY: "Tuesday",
+    #     WEDNESDAY: "Wednesday",
+    #     THURSDAY: "Thursday",
+    #     FRIDAY: "Friday",
+    # }
 
-    DAY_OF_WEEK = {
-        MONDAY: "Monday",
-        TUESDAY: "Tuesday",
-        WEDNESDAY: "Wednesday",
-        THURSDAY: "Thursday",
-        FRIDAY: "Friday",
-    }
-
-    day_of_the_week = models.CharField(
-        max_length=3,
-        choices=DAY_OF_WEEK,
-        default=MONDAY,
-    )
-    def __str__(self):
-        return self.day_of_the_week
+    # day_of_the_week = models.CharField(
+    #     max_length=3,
+    #     choices=DAY_OF_WEEK,
+    #     default=MONDAY,
+    # )
+    # def __str__(self):
+    #     return self.day_of_the_week
 
     period_number = models.PositiveSmallIntegerField(default=1)
     activity = models.CharField(max_length=200)
     picture = models.URLField()
+
+    # period_number_2 = models.PositiveSmallIntegerField(default=2)
+    # activity = models.CharField(max_length=200)
+    # picture = models.URLField()
+
+    # period_number_3 = models.PositiveSmallIntegerField(default=3)
+    # activity = models.CharField(max_length=200)
+    # picture = models.URLField()
+
+    # period_number_4 = models.PositiveSmallIntegerField(default=4)
+    # activity = models.CharField(max_length=200)
+    # picture = models.URLField()
+
+    # period_number_5 = models.PositiveSmallIntegerField(default=5)
+    # activity = models.CharField(max_length=200)
+    # picture = models.URLField()
+
+    # period_number_6 = models.PositiveSmallIntegerField(default=6)
+    # activity = models.CharField(max_length=200)
+    # picture = models.URLField()
+
+    # period_number_7 = models.PositiveSmallIntegerField(default=7)
+    # activity = models.CharField(max_length=200)
+    # picture = models.URLField()
 
     class Meta:
         ordering = ["activity"]
