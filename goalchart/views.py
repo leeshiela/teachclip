@@ -81,7 +81,9 @@ def add_student(request):
 @login_required
 def show_student_goal_detail(request, id):
     goal = get_object_or_404(Goal, id=id)
+    student = Student.objects.get(id=id)
     context = {
         "goal": goal,
+        "student": student,
     }
     return render(request, "goalchart/student_detail.html", context)

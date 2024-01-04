@@ -9,7 +9,7 @@ Editing a Goal
 {% endblock nav %}
 
 {% block main %}
-    <h1>Edit {{ goals.student_first_name }}'s Goal</h1>
+    <h1>Edit {{ goal.student.student_first_name }}'s Goal</h1>
     <form method="post">
         {% csrf_token %}
         {{ edit_goal.as_p }}
