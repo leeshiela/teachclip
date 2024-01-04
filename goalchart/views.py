@@ -5,7 +5,7 @@ from goalchart.forms import CreateStudentGoal, AddStudent
 
 @login_required
 def goal_per_day(request, id):
-    student = Student.objects.filter(teacher=request.user)
+    student = Student.objects.get(id=id)
     context = {
         "student": student,
     }
@@ -29,7 +29,7 @@ def average_rating(request):
 @login_required
 def create_student_goal(request, id):
     if request.method == "POST":
-        form = CreateStudentGoal(request.POST, user=id)
+        form = CreateStudentGoal(request.POST)
         if form.is_valid():
             goal = form.save(False)
             goal.student = Student.objects.get(id=id)
@@ -37,7 +37,8 @@ def create_student_goal(request, id):
             goal.save()
             return redirect("teacher_home")
     else:
-        form = CreateStudentGoal(user=id)
+        form = CreateStudentGoal()
+    print("before context")
     context = {
         "goal_form": form,
         "student_name": Student.objects.get(id=id).student_first_name

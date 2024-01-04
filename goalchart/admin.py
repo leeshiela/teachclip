@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Schedule, Goal
+from .models import Student, Schedule, Goal, Activity
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -18,10 +18,13 @@ class ScheduleAdmin(admin.ModelAdmin):
         "id",
         "student",
         "date",
-        "period_number",
-        "activity",
-        "picture",
-
+        "activity_1",
+        "activity_2",
+        "activity_3",
+        "activity_4",
+        "activity_5",
+        "activity_6",
+        "activity_7",
     ]
 
 @admin.register(Goal)
@@ -44,3 +47,12 @@ class GoalsAdmin(admin.ModelAdmin):
 #         "goals",
 #         "rating",
 #     ]
+
+@admin.register(Activity)
+class Activity(admin.ModelAdmin):
+    list_display = [
+        "id",
+        "activity_name",
+        "activity_description",
+        "activity_picture_url",
+    ]

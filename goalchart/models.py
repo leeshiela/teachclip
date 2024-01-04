@@ -49,6 +49,14 @@ class Student(models.Model):
         ordering = ["student_first_name"]
     # Add Parent Foreign Key
 
+class Activity(models.Model):
+    activity_name = models.CharField(max_length=200, null=True)
+    activity_description = models.TextField(null=True)
+    activity_picture_url = models.URLField(null=True)
+
+    def __str__(self):
+        return self.activity_name
+
 
 class Schedule(models.Model):
     student = models.ForeignKey(
@@ -57,7 +65,7 @@ class Schedule(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
-    date = models.DateTimeField(null=True)
+    date = models.DateField(null=True)
     # MONDAY = "MON"
     # TUESDAY = "TUE"
     # WEDNESDAY = "WED"
@@ -77,39 +85,65 @@ class Schedule(models.Model):
     #     choices=DAY_OF_WEEK,
     #     default=MONDAY,
     # )
-    # def __str__(self):
-    #     return self.day_of_the_week
+    def __str__(self):
+        return self.date.strftime('%A %b %d %Y')
 
-    period_number = models.PositiveSmallIntegerField(default=1)
-    activity = models.CharField(max_length=200)
-    picture = models.URLField()
+    activity_1 = models.ForeignKey(
+        Activity,
+        related_name="schedule_activity_1",
+        on_delete=models.CASCADE,
+        null=True,
+    )
 
-    # period_number_2 = models.PositiveSmallIntegerField(default=2)
-    # activity = models.CharField(max_length=200)
-    # picture = models.URLField()
 
-    # period_number_3 = models.PositiveSmallIntegerField(default=3)
-    # activity = models.CharField(max_length=200)
-    # picture = models.URLField()
+    activity_2 = models.ForeignKey(
+        Activity,
+        related_name="schedule_activity_2",
+        on_delete=models.CASCADE,
+        null=True,
+    )
 
-    # period_number_4 = models.PositiveSmallIntegerField(default=4)
-    # activity = models.CharField(max_length=200)
-    # picture = models.URLField()
 
-    # period_number_5 = models.PositiveSmallIntegerField(default=5)
-    # activity = models.CharField(max_length=200)
-    # picture = models.URLField()
+    activity_3 = models.ForeignKey(
+        Activity,
+        related_name="schedule_activity_3",
+        on_delete=models.CASCADE,
+        null=True,
+    )
 
-    # period_number_6 = models.PositiveSmallIntegerField(default=6)
-    # activity = models.CharField(max_length=200)
-    # picture = models.URLField()
 
-    # period_number_7 = models.PositiveSmallIntegerField(default=7)
-    # activity = models.CharField(max_length=200)
-    # picture = models.URLField()
+    activity_4 = models.ForeignKey(
+        Activity,
+        related_name="schedule_activity_4",
+        on_delete=models.CASCADE,
+        null=True,
+    )
 
-    class Meta:
-        ordering = ["activity"]
+    activity_5 = models.ForeignKey(
+        Activity,
+        related_name="schedule_activity_5",
+        on_delete=models.CASCADE,
+        null=True,
+    )
+
+
+    activity_6 = models.ForeignKey(
+        Activity,
+        related_name="schedule_activity_6",
+        on_delete=models.CASCADE,
+        null=True,
+    )
+
+
+    activity_7 = models.ForeignKey(
+        Activity,
+        related_name="schedule_activity_7",
+        on_delete=models.CASCADE,
+        null=True,
+    )
+
+    # class Meta:
+    #     ordering = ["activity"]
 
 
 class Goal(models.Model):

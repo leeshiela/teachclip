@@ -130,6 +130,13 @@ h1 {
     background: linear-gradient(in hsl, rgb(82, 185, 216), rgb(177, 88, 225));
 }
 
+#info-section {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 footer {
     font-family: 'Shadows Into Light', cursive;
     margin: 20px;

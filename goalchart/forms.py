@@ -2,23 +2,21 @@ from django import forms
 from django.forms import DateInput
 from goalchart.models import Student, Schedule, Goal, Rating
 
-class CalendarInput(DateInput):
-    input_type = "datetime-local"
+# class CalendarInput(DateInput):
+#     input_type = "datetime-local"
 
 # Create a goal for a student
 class CreateStudentGoal(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        print("before")
-        self.user_id = kwargs.pop("user")
-        print("after")
-        self.user = Student.objects.get(id=self.user_id)
-        super(CreateStudentGoal, self).__init__(*args, **kwargs)
-        # self.fields["student"].queryset = Student.objects.filter(
-        #     student=self.user
-        # )
-        self.fields["schedule"].queryset = Schedule.objects.filter(
-            student=self.user
-        )
+    # def __init__(self, *args, **kwargs):
+    #     self.user_id = kwargs.pop("user")
+    #     self.user = Student.objects.get(id=self.user_id)
+    #     super(CreateStudentGoal, self).__init__(*args, **kwargs)
+    #     # self.fields["student"].queryset = Student.objects.filter(
+    #     #     student=self.user
+    #     # )
+    #     self.fields["schedule"].queryset = Schedule.objects.filter(
+    #         student=self.user
+    #     )
 
     class Meta:
         model = Goal
@@ -29,7 +27,7 @@ class CreateStudentGoal(forms.ModelForm):
             "goal_picture",
             "goal_rating",
         ]
-        widgets = {"schedule": CalendarInput(format="%Y-%m-%dT%H:%M")}
+        # widgets = {"schedule": CalendarInput(format="%Y-%m-%dT%H:%M")}
 
 
 
