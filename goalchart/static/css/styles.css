@@ -164,7 +164,7 @@ footer {
     align-items: center;
 }
 
-#add-student {
+.add-big-button {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -177,7 +177,7 @@ footer {
     border: 1px solid;
 }
 
-#add-student:hover {
+.add-big-button:hover {
     box-shadow: 10px 5px 5px rgb(2, 38, 8);
 }
 
@@ -232,6 +232,18 @@ table {
     border: 2px solid black;
     border-collapse: collapse;
     width: 100%;
+}
+
+.goal-chart-table {
+    text-align: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.table-pictures{
+    width: 100px;
+    height: 100px;
+    align-items: center;
 }
 
 table th {

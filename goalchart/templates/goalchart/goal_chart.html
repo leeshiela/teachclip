@@ -1,23 +1,124 @@
 {% extends "base.html" %}
 
 {% block title %}
-    {{ student.student_first_name }} Goals
+    {{ goal.student.student_first_name }} Goals
 {% endblock title %}
 
 {% block main %}
-<h1>Goal Charts for {{ student.student_first_name}}</h1>
-<h2>Have I met the goal: </h2>
+<h1>Goal Chart for {{ goal.student.student_first_name}} on {{ goal.schedule.date|date:"l, F d, Y"}}</h1>
 
-<h2>{{ student.student_first_name }}'s Monday Charts</h2>
+<div class="student-box {% cycle "group1" "group2" "group3" %}">
+    <table class="goal_chart_table">
+        <thead>
+            <tr>
+                <th>Period</th>
+                <th>{{goal.goal_name}} <img class="table-pictures" src="{{goal.goal_picture}}" alt="Picture of Goal"></th>
+                <th>Activity</th>
+                <th>Picture of Activity</th>
+            </tr>
+        </thead>
+        <tbody class="striped-table">
+            <tr>
+                <td>1</td>
+                <td>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </td>
+                <td>{{ goal.schedule.activity_1.activity_name }}</td>
+                <td><img class="table-pictures" src="{{ goal.schedule.activity_1.activity_picture_url }}" alt="Picture of Activity1"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </td>
+                <td>{{ goal.schedule.activity_2.activity_name }}</td>
+                <td><img class="table-pictures" src="{{ goal.schedule.activity_2.activity_picture_url }}" alt="Picture of Activity2"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </td>
+                <td>{{ goal.schedule.activity_3.activity_name }}</td>
+                <td><img class="table-pictures" src="{{ goal.schedule.activity_3.activity_picture_url }}" alt="Picture of Activity3"></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </td>
+                <td>{{ goal.schedule.activity_4.activity_name }}</td>
+                <td><img class="table-pictures" src="{{ goal.schedule.activity_4.activity_picture_url }}" alt="Picture of Activity4"></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </td>
+                <td>{{ goal.schedule.activity_5.activity_name }}</td>
+                <td><img class="table-pictures" src="{{ goal.schedule.activity_5.activity_picture_url }}" alt="Picture of Activity5">}</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </td>
+                <td>{{ goal.schedule.activity_6.activity_name }}</td>
+                <td><img class="table-pictures" src="{{ goal.schedule.activity_6.activity_picture_url }}" alt="Picture of Activity6"></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </td>
+                <td>{{ goal.schedule.activity_7.activity_name }}</td>
+                <td><img class="table-pictures" src="{{ goal.schedule.activity_7.activity_picture_url }}" alt="Picture of Activity7"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-<h2>{{ student.student_first_name }}'s Tuesday Charts</h2>
+<h2>Have I met the goal? </h2>
+<div class="add-big-button">
+    <a href="{% url "add_activity" goal.id %}"><h2>+ Activity</h2></a>
+</div>
 
-<h2>{{ student.student_first_name }}'s Wednesday Charts</h2>
+<h2>{{ goal.student.student_first_name }}'s Monday Charts</h2>
 
-<h2>{{ student.student_first_name }}'s Thursday Charts</h2>
+<h2>{{ goal.student.student_first_name }}'s Tuesday Charts</h2>
 
-<h2>{{ student.student_first_name }}'s Friday Charts</h2>
+<h2>{{ goal.student.student_first_name }}'s Wednesday Charts</h2>
 
-<i class="fa-regular fa-star"></i>
-<i class="fa-solid fa-star"></i>
+<h2>{{ goal.student.student_first_name }}'s Thursday Charts</h2>
+
+<h2>{{ goal.student.student_first_name }}'s Friday Charts</h2>
+
 {% endblock main %}

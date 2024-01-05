@@ -57,6 +57,12 @@ class Activity(models.Model):
     def __str__(self):
         return self.activity_name
 
+    teacher = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="activities",
+        on_delete=models.CASCADE,
+        null=True,
+    )
 
 class Schedule(models.Model):
     student = models.ForeignKey(

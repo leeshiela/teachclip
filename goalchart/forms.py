@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import DateInput
-from goalchart.models import Student, Schedule, Goal, Rating
+from goalchart.models import Student, Activity, Schedule, Goal, Rating
 
 # class CalendarInput(DateInput):
 #     input_type = "datetime-local"
@@ -37,4 +37,13 @@ class AddStudent(forms.ModelForm):
         fields = [
             "student_first_name",
             "grade_in_school",
+        ]
+
+class AddActivity(forms.ModelForm):
+    class Meta:
+        model = Activity
+        fields = [
+            "activity_name",
+            "activity_description",
+            "activity_picture_url",
         ]

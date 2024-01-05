@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %} Teacher Home {% endblock title %}
 
 {% block userimg %}
   <div class="info-img">
-    <img src="https://picsum.photos/id/24/100/200" alt="book image">
+    <img src="{% static "img/pens.jpg" %}" alt="pens image">
     <h1>{{ user.first_name }}'s Awesome Students</h1>
   </div>
 {% endblock userimg %}
@@ -12,7 +13,7 @@
 {% block main %}
 <div class="center-container">
   <h1>My Students</h1>
-  <div id="add-student">
+  <div class="add-big-button">
     <a href="{% url "add_student" %}"><h2>+ Student</h2></a>
   </div>
 </div>
@@ -34,20 +35,19 @@
           {% for goal in student.goals.all %}
           <tr>
               <td><a href="{% url "edit_goal" goal.id %}">{{ goal.goal_name}}</a></td>
-                <td>
-                  {% comment %} {% for rating in goal.goal_ratings.all %}
-                  {{ rating.rating}} {% endcomment %}
-                  <a href="{% url "goal_chart" student.id %}">
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i>
-                  <i class="fa-regular fa-star"></i></a>
-                  {% comment %} {% endfor %} {% endcomment %}
-                </td>
-                <td>{{ goal.last_modified }}</td>
-            </tr>
-
+              <td>
+                {% comment %} {% for rating in goal.goal_ratings.all %}
+                {{ rating.rating}} {% endcomment %}
+                <a href="{% url "goal_chart" goal.id %}">
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i></a>
+                {% comment %} {% endfor %} {% endcomment %}
+              </td>
+              <td>{{ goal.last_modified }}</td>
+          </tr>
           {% endfor %}
         </tbody>
       </table>

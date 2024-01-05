@@ -1,15 +1,34 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from goalchart.models import Student, Schedule, Goal, Rating
+from goalchart.models import Student, Activity, Schedule, Goal, Rating
 from django.contrib.auth.decorators import login_required
-from goalchart.forms import CreateStudentGoal, AddStudent
+from goalchart.forms import CreateStudentGoal, AddStudent, AddActivity
 
 @login_required
 def goal_per_day(request, id):
-    student = Student.objects.get(id=id)
+    goal = get_object_or_404(Goal, id=id)
     context = {
-        "student": student,
+        "goal": goal,
     }
     return render(request, "goalchart/goal_chart.html", context)
+
+@login_required
+def add_activity(request, id):
+    if request.method == "POST":
+        form = AddActivity(request.POST)
+        if form.is_valid():
+            activity = form.save(False)
+            activity.student = Student.objects.get(id=id)
+            activity.teacher = request.user
+            activity.save()
+            return redirect("goal_chart")
+    else:
+        form = AddActivity()
+    context = {
+        "activity_form": form,
+        "student_name": Student.objects.get(id=id).student_first_name
+    }
+    return render(request, "goalchart/add_activity.html", context)
+
 
 @login_required
 def goal_list(request):
@@ -23,7 +42,6 @@ def goal_list(request):
 def average_rating(request):
     rating = get_object_or_404(Goal, id=id)
     ratings = Rating.objects.all()
-
     avg_rating = ratings/len(ratings)
 
 @login_required
@@ -38,7 +56,6 @@ def create_student_goal(request, id):
             return redirect("teacher_home")
     else:
         form = CreateStudentGoal()
-    print("before context")
     context = {
         "goal_form": form,
         "student_name": Student.objects.get(id=id).student_first_name
@@ -79,11 +96,11 @@ def add_student(request):
     return render(request, "goalchart/add_student.html", context)
 
 @login_required
-def show_student_goal_detail(request, id):
+def show_student_schedule_calendar(request, id):
     goal = get_object_or_404(Goal, id=id)
     student = Student.objects.get(id=id)
     context = {
         "goal": goal,
         "student": student,
     }
-    return render(request, "goalchart/student_detail.html", context)
+    return render(request, "goalchart/student_calendar.html", context)
