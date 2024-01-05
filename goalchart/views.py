@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from goalchart.models import Student, Activity, Schedule, Goal, Rating
 from django.contrib.auth.decorators import login_required
-from goalchart.forms import CreateStudentGoal, AddStudent, AddActivity
+from goalchart.forms import CreateStudentGoal, AddStudent, AddActivity, CreateSchedule
 
 @login_required
 def goal_per_day(request, id):
@@ -12,20 +12,18 @@ def goal_per_day(request, id):
     return render(request, "goalchart/goal_chart.html", context)
 
 @login_required
-def add_activity(request, id):
+def add_activity(request):
     if request.method == "POST":
         form = AddActivity(request.POST)
         if form.is_valid():
             activity = form.save(False)
-            activity.student = Student.objects.get(id=id)
             activity.teacher = request.user
             activity.save()
-            return redirect("goal_chart")
+            return redirect("schedules")
     else:
         form = AddActivity()
     context = {
         "activity_form": form,
-        "student_name": Student.objects.get(id=id).student_first_name
     }
     return render(request, "goalchart/add_activity.html", context)
 
@@ -43,6 +41,7 @@ def average_rating(request):
     rating = get_object_or_404(Goal, id=id)
     ratings = Rating.objects.all()
     avg_rating = ratings/len(ratings)
+
 
 @login_required
 def create_student_goal(request, id):
@@ -96,11 +95,17 @@ def add_student(request):
     return render(request, "goalchart/add_student.html", context)
 
 @login_required
-def show_student_schedule_calendar(request, id):
-    goal = get_object_or_404(Goal, id=id)
-    student = Student.objects.get(id=id)
+def create_student_schedule_calendar(request):
+    if request.method == "POST":
+        form = CreateSchedule(request.POST)
+        if form.is_valid():
+            schedule = form.save(False)
+            schedule.teacher = request.user
+            schedule.save()
+            return redirect("teacher_home")
+    else:
+        form = CreateSchedule()
     context = {
-        "goal": goal,
-        "student": student,
+        "schedule_form": form,
     }
     return render(request, "goalchart/student_calendar.html", context)

@@ -8,7 +8,7 @@
 <h1>Goal Chart for {{ goal.student.student_first_name}} on {{ goal.schedule.date|date:"l, F d, Y"}}</h1>
 
 <div class="student-box {% cycle "group1" "group2" "group3" %}">
-    <table class="goal_chart_table">
+    <table class="goal-chart-table">
         <thead>
             <tr>
                 <th>Period</th>
@@ -107,10 +107,8 @@
 </div>
 
 <h2>Have I met the goal? </h2>
-<div class="add-big-button">
-    <a href="{% url "add_activity" goal.id %}"><h2>+ Activity</h2></a>
-</div>
 
+{% comment %}
 <h2>{{ goal.student.student_first_name }}'s Monday Charts</h2>
 
 <h2>{{ goal.student.student_first_name }}'s Tuesday Charts</h2>
@@ -119,6 +117,6 @@
 
 <h2>{{ goal.student.student_first_name }}'s Thursday Charts</h2>
 
-<h2>{{ goal.student.student_first_name }}'s Friday Charts</h2>
+<h2>{{ goal.student.student_first_name }}'s Friday Charts</h2> {% endcomment %}
 
 {% endblock main %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{student.student_first_name}}'s Goals
+Create a schedule
 {% endblock title %}
 
 {% block nav %}
@@ -9,10 +9,16 @@
 {% endblock nav %}
 
 {% block main %}
-    <h1>Edit {{ student.student_first_name}}'s Goal</h1>
+<div class="center-container">
+    <div class="add-big-button">
+        <div><a href="{% url "add_activity" %}"><h2>+ Activity</h2></a></div>
+    </div>
+</div>
+
+    <h1>Create a Schedule For a Particular Day</h1>
     <form method="post">
         {% csrf_token %}
-        {{ edit_goal.as_p }}
-        <button>Edit</button>
+        {{ schedule_form.as_p }}
+        <button>Create</button>
     </form>
 {% endblock main %}

@@ -144,6 +144,7 @@ h1 {
     align-items: center;
 }
 
+
 #about p {
     font-size: 20px;
     margin: 15px;
@@ -237,7 +238,12 @@ table {
 .goal-chart-table {
     text-align: center;
     align-items: center;
-    font-size: 25px;
+}
+.goal-chart-table th {
+    font-size: 50px;
+}
+.goal-chart-table td {
+    font-size: 45px;
 }
 
 .table-pictures{

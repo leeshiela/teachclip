@@ -23,7 +23,7 @@
             <nav>
               {% comment %} <div><a href="{% url "info" %}">Home</a></div> {% endcomment %}
               {% if user.is_authenticated %}
-                <div><a href="{% url "teacher_home" %}">My Student Schedules</a></div>
+                <div><a href="{% url "schedules" %}">Create Schedule</a></div>
                 <div><a href="{% url "teacher_home" %}">My Students</a></div>
                 <a href="{% url "logout" %}">Logout</a>
               {% else %}

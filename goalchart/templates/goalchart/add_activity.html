@@ -9,7 +9,7 @@ Add an activity
 {% endblock nav %}
 
 {% block main %}
-    <h1>Add an Activity for {{student_name}}</h1>
+    <h1>Add an Activity</h1>
     <form method="post">
         {% csrf_token %}
         {{ activity_form.as_p }}

@@ -1,5 +1,5 @@
 from django.urls import path
-from goalchart.views import goal_per_day, goal_list, add_student, create_student_goal, edit_student_goal, add_activity
+from goalchart.views import goal_per_day, goal_list, add_student, create_student_goal, edit_student_goal, add_activity, create_student_schedule_calendar
 from django.views.generic.base import TemplateView
 
 
@@ -12,5 +12,6 @@ urlpatterns = [
     path("add_student/", add_student, name="add_student"),
     path("create_goal/<int:id>/", create_student_goal, name="create_goal"),
     path("edit_goal/<int:id>/", edit_student_goal, name="edit_goal"),
-    path("add_activity/<int:id>/", add_activity, name="add_activity"),
+    path("add_activity/", add_activity, name="add_activity"),
+    path("schedules/", create_student_schedule_calendar, name="schedules"),
 ]
