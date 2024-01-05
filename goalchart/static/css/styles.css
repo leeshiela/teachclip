@@ -83,6 +83,22 @@ h1 {
     text-align: center;
 }
 
+.card{
+    position: relative;
+    display:inline-block;
+}
+
+.card .color {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.card:hover .color {
+    display: inline;
+}
 
 .info-img {
     position: relative;
@@ -144,6 +160,12 @@ h1 {
     align-items: center;
 }
 
+#about {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
 
 #about p {
     font-size: 20px;
@@ -240,10 +262,10 @@ table {
     align-items: center;
 }
 .goal-chart-table th {
-    font-size: 50px;
+    font-size: 45px;
 }
 .goal-chart-table td {
-    font-size: 45px;
+    font-size: 35px;
 }
 
 .table-pictures{
