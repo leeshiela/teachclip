@@ -1,5 +1,5 @@
 from django.urls import path
-from goalchart.views import goal_per_day, goal_list, add_student, create_student_goal, edit_student_goal, add_activity, create_student_schedule_calendar
+from goalchart.views import goal_per_day, goal_list, add_student, create_student_goal, edit_student_goal, add_activity, create_student_schedule_calendar, index, rate
 from django.views.generic.base import TemplateView
 
 

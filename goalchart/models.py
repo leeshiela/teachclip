@@ -171,14 +171,14 @@ class Goal(models.Model):
     last_modified = models.DateTimeField(auto_now=True, null=True)
     goal_rating = models.PositiveSmallIntegerField(default = 0,null=True)
 
-    def __str__(self):
-        return self.goal_name
-
-    # def average_rating(self) -> float:
-    #     return Rating.objects.filter(goals=self).aggregate(Avg("rating")) ["rating_avg"] or 0
-
     # def __str__(self):
-    #     return f"{self.goal_name}: {self.average_rating()}"
+    #     return self.goal_name
+
+    def average_rating(self) -> float:
+        return Rating.objects.filter(goals=self).aggregate(Avg("rating")) ["rating_avg"] or 0
+
+    def __str__(self):
+        return f"{self.goal_name}: {self.average_rating()}"
 
     class Meta:
         ordering = ["goal_name"]
@@ -191,6 +191,7 @@ class Rating(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
+
     rating = models.PositiveSmallIntegerField(default = 0)
 
     def __str__(self):

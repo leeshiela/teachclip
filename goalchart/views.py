@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from goalchart.models import Student, Activity, Schedule, Goal, Rating
 from django.contrib.auth.decorators import login_required
 from goalchart.forms import CreateStudentGoal, AddStudent, AddActivity, CreateSchedule
+from django.http import HttpResponse, HttpRequest
 
 @login_required
 def goal_per_day(request, id):
@@ -109,3 +110,16 @@ def create_student_schedule_calendar(request):
         "schedule_form": form,
     }
     return render(request, "goalchart/student_calendar.html", context)
+
+def index(request: HttpRequest) -> HttpResponse:
+    goals = Goal.objects.all()
+    for goal in goals:
+        rating = Rating.objects.filter(goal=goal, user=request.user).first()
+        goal.user_rating = rating.rating if rating else 0
+    return render(request, "goalchart/goal_chart.html", {"goals": goals})
+
+def rate(request: HttpRequest, goal_id: int, rating: int) -> HttpResponse:
+    goal = Goal.objects.get(id=goal_id)
+    Rating.objects.filter(goal=goal, user=request.user).delete()
+    Goal.rating_set.create(user=request.user, rating=rating)
+    return index(request, "goalchart/teacher_home.html")
