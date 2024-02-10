@@ -41,7 +41,7 @@ class Student(models.Model):
     # )
     class Meta:
         ordering = ["student_first_name"]
-    # Add Parent Foreign Key
+    # Add Parent Foreign Key (for future development)
 
 class Activity(models.Model):
     activity_name = models.CharField(max_length=200, null=True)
@@ -66,25 +66,7 @@ class Schedule(models.Model):
         null=True,
     )
     date = models.DateField(null=True)
-    # MONDAY = "MON"
-    # TUESDAY = "TUE"
-    # WEDNESDAY = "WED"
-    # THURSDAY = "THU"
-    # FRIDAY = "FRI"
 
-    # DAY_OF_WEEK = {
-    #     MONDAY: "Monday",
-    #     TUESDAY: "Tuesday",
-    #     WEDNESDAY: "Wednesday",
-    #     THURSDAY: "Thursday",
-    #     FRIDAY: "Friday",
-    # }
-
-    # day_of_the_week = models.CharField(
-    #     max_length=3,
-    #     choices=DAY_OF_WEEK,
-    #     default=MONDAY,
-    # )
     def __str__(self):
         return self.date.strftime('%A %b %d %Y')
 
@@ -95,7 +77,6 @@ class Schedule(models.Model):
         null=True,
     )
 
-
     activity_2 = models.ForeignKey(
         Activity,
         related_name="schedule_activity_2",
@@ -103,14 +84,12 @@ class Schedule(models.Model):
         null=True,
     )
 
-
     activity_3 = models.ForeignKey(
         Activity,
         related_name="schedule_activity_3",
         on_delete=models.CASCADE,
         null=True,
     )
-
 
     activity_4 = models.ForeignKey(
         Activity,
@@ -126,7 +105,6 @@ class Schedule(models.Model):
         null=True,
     )
 
-
     activity_6 = models.ForeignKey(
         Activity,
         related_name="schedule_activity_6",
@@ -134,16 +112,12 @@ class Schedule(models.Model):
         null=True,
     )
 
-
     activity_7 = models.ForeignKey(
         Activity,
         related_name="schedule_activity_7",
         on_delete=models.CASCADE,
         null=True,
     )
-
-    # class Meta:
-    #     ordering = ["activity"]
 
 
 class Goal(models.Model):
@@ -164,9 +138,6 @@ class Goal(models.Model):
     goal_picture = models.URLField()
     last_modified = models.DateTimeField(auto_now=True, null=True)
     goal_rating = models.PositiveSmallIntegerField(default = 0,null=True)
-
-    # def __str__(self):
-    #     return self.goal_name
 
     def average_rating(self) -> float:
         return Rating.objects.filter(goals=self).aggregate(Avg("rating")) ["rating_avg"] or 0
