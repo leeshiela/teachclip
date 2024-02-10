@@ -33,12 +33,7 @@ class Student(models.Model):
         on_delete=models.CASCADE,
         null=True,
     )
-    # parent = models.ForeignKey(
-    #     settings.AUTH_USER_MODEL,
-    #     related_name = "students",
-    #     on_delete = models.CASCADE,
-    #     null=True
-    # )
+
     class Meta:
         ordering = ["student_first_name"]
     # Add Parent Foreign Key (for future development)
