@@ -5,27 +5,21 @@ from django.conf import settings
 
 class Student(models.Model):
     student_first_name = models.CharField(max_length=200)
-    KINDERGARTEN = "K"
-    FIRST = "G1"
-    SECOND = "G2"
-    THIRD = "G3"
-    FOURTH = "G4"
-    FIFTH = "G5"
-    OTHER = "GO"
-    GRADE_IN_SCHOOL_CHOICES = {
-        KINDERGARTEN: "Kindergarten",
-        FIRST: "1st Grade",
-        SECOND: "2nd Grade",
-        THIRD: "3rd Grade",
-        FOURTH: "4th Grade",
-        FIFTH: "5th Grade",
-        OTHER: "Other",
-    }
+
+    GRADE_IN_SCHOOL_CHOICES = [
+        ("K", "Kindergarten"),
+        ("G1", "1st Grade"),
+        ("G2", "2nd Grade"),
+        ("G3", "3rd Grade"),
+        ("G4", "4th Grade"),
+        ("G5", "5th Grade"),
+        ("GO", "Other"),
+    ]
 
     grade_in_school = models.CharField(
         max_length=2,
         choices=GRADE_IN_SCHOOL_CHOICES,
-        default=KINDERGARTEN,
+        default="K",
     )
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
