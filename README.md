@@ -18,6 +18,10 @@ python manage.py runserver
 
 4. View the project in the browser: http://localhost:8000/
 
+![Creating Students image](/resources/my-students.png)
+![Creating a Schedule image](/resources/schedule.png)
+![Creating a goal chart image](/resources/goal-chart.png)
+
 
 ## How It Works
 
@@ -29,4 +33,11 @@ python manage.py runserver
 6. Return to your "My Students" page and create some students and add goals for them by clicking on the "+Goal" link in each student box.
 7. When you click on the stars, you should see the goal chart populate!
 
-Note: I am still working on making the star rating and average star rating feature work. So, that feature is not functioning at present.
+## Future Development
+
+I am still working on making the star rating and average star rating feature work. So, that feature is not functioning at present.
+
+Future features:
+- Clickable log of star ratings
+- Average star rating over time
+- Notification for when the star ratings reach a threshold. Notifies teacher that the student is either failing to meet or is already meeting their goal
