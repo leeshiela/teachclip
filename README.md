@@ -3,7 +3,7 @@
 TeachClip is a web application that allows teachers and students to create goals for students. This was born out of my experience as a teacher and I noticed students needed to keep track of their goals. Many of the special needs students needed to bring their paper goal charts to their classes and it was becoming cumbersome to bring so many papers and to fill out whether or not they met the goal or not. TeachClip makes the goal tracking easier. Create your own students and create goals for them. Set the daily schedule by creating activities and then putting those activities into a schedule. Then create the goal.
 
 ## Getting started
-This project is entirely run on python and Django. When I started this project, we were challenged to create a monolith using only a backend language. I also know front end and React in other projects.
+This project is entirely run on python and Django.
 
 1. Start by forking this repository.
 

@@ -111,14 +111,14 @@ def create_student_schedule_calendar(request):
     }
     return render(request, "goalchart/student_calendar.html", context)
 
-def index(request: HttpRequest) -> HttpResponse:
+def index(request: HttpRequest):
     goals = Goal.objects.all()
     for goal in goals:
         rating = Rating.objects.filter(goal=goal, user=request.user).first()
         goal.user_rating = rating.rating if rating else 0
     return render(request, "goalchart/goal_chart.html", {"goals": goals})
 
-def rate(request: HttpRequest, goal_id: int, rating: int) -> HttpResponse:
+def rate(request: HttpRequest, goal_id: int, rating: int):
     goal = Goal.objects.get(id=goal_id)
     Rating.objects.filter(goal=goal, user=request.user).delete()
     Goal.rating_set.create(user=request.user, rating=rating)
