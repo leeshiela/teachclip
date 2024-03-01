@@ -35,8 +35,6 @@ python manage.py runserver
 
 ## Future Development
 
-I am still working on making the star rating and average star rating feature work. So, that feature is not functioning at present.
-
 Future features:
 - Clickable log of star ratings
 - Average star rating over time
